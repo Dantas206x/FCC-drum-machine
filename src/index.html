@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .conteudo-centralizado {
+            text-align: center;
+        }
+    </style>
+    <title>Title of the document</title>
+</head>
+
+<body>
+    <div class="inner-container" id="drum-machine">
+        <!-- controles de som -->
+        <div class="pad-bank">
+            <!-- 1 -->
+            <div class="drum-pad" id="Chord-1" style="background-color: grey; margin-top: 10px; box-shadow: black 3px 3px 5px;">Q
+                <audio class="clip" id="Q" src="https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3"></audio>
+            </div>
+            <!-- 2 -->
+            <div class="drum-pad" id="Chord-2" style="background-color: grey; margin-top: 10px; box-shadow: black 3px 3px 5px;">W
+                <audio class="clip" id="W" src="https://s3.amazonaws.com/freecodecamp/drums/Chord_2.mp3"></audio>
+            </div>
+            <!-- 3 -->
+            <div class="drum-pad" id="Chord-3" style="background-color: grey; margin-top: 10px; box-shadow: black 3px 3px 5px;">E
+                <audio class="clip" id="E" src="https://s3.amazonaws.com/freecodecamp/drums/Chord_3.mp3"></audio>
+            </div>
+            <!-- 4 -->
+            <div class="drum-pad" id="Shaker" style="background-color: grey; margin-top: 10px; box-shadow: black 3px 3px 5px;">A
+                <audio class="clip" id="A" src="https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3"></audio>
+            </div>
+            <!-- 5 -->
+            <div class="drum-pad" id="Open-HH" style="background-color: grey; margin-top: 10px; box-shadow: black 3px 3px 5px;">S
+                <audio class="clip" id="S" src="https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"></audio>
+            </div>
+            <!-- 6 -->
+            <div class="drum-pad" id="Closed-HH" style="background-color: grey; margin-top: 10px; box-shadow: black 3px 3px 5px;">D
+                <audio class="clip" id="D" src="https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3"></audio>
+            </div>
+            <!-- 7 -->
+            <div class="drum-pad" id="Punchy-Kick" style="background-color: grey; margin-top: 10px; box-shadow: black 3px 3px 5px;">Z
+                <audio class="clip" id="Z" src="https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3"></audio>
+            </div>
+            <!-- 8 -->
+            <div class="drum-pad" id="Side-Stick" style="background-color: grey; margin-top: 10px; box-shadow: black 3px 3px 5px;">X
+                <audio class="clip" id="X" src="https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3"></audio>
+            </div>
+            <!-- 9 -->
+            <div class="drum-pad" id="Snare" style="background-color: grey; margin-top: 10px; box-shadow: black 3px 3px 5px;">C
+                <audio class="clip" id="C" src="https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3"></audio>
+            </div>
+        </div>
+        <!-- volume e etc -->
+        <div class="controls-container">
+            <div class="control">
+                <p>Power</p>
+                <div class="select">
+                    <div class="inner" style="float: right;"></div>
+                </div>
+            </div>
+            <p id="display"></p>
+            <div class="volume-slider">
+                <input max="1" min="0" step="0.01" type="range" value="0.3">
+            </div>
+            <div class="control">
+                <p>Bank</p>
+                <div class="select">
+                    <div class="inner" style="float: right;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const drumPads = document.querySelectorAll('.drum-pad');
+
+   
+    drumPads.forEach(drumPad => {
+        drumPad.addEventListener('click', () => {
+         
+            const audio = drumPad.querySelector('.clip');
+
+            
+            const drumPadId = drumPad.id;
+            display.textContent = `${drumPadId}`;
+
+        
+            audio.play();
+        });
+    });
+
+   
+    document.addEventListener('keydown', (event) => {
+       
+        const key = event.key.toUpperCase();
+
+    
+        const drumPad = document.getElementById(key);
+
+       
+        if (drumPad) {
+            drumPad.click();
+        }
+    });
+    </script>
+</body>
+
+</html>
